@@ -20,7 +20,7 @@ A 3D interactive star system built with [React](https://react.dev/), [@react-thr
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/star-system.git
+git clone https://github.com/JonathanJiWu/star-system.git
 cd star-system
 npm install
 # or
@@ -35,7 +35,7 @@ npm start
 yarn start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open localhost in your browser.
 
 ## Project Structure
 
