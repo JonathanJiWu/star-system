@@ -1,8 +1,8 @@
 import { useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
+import { Mesh } from 'three';
 
 export default function Star() {
-    const ref = useRef();// what is this? useRef creates a mutable object that persists for the lifetime of the component
+    const ref = useRef<Mesh>(null);
 
     return (
         <mesh ref={ref}>
