@@ -1,54 +1,72 @@
-# React + TypeScript + Vite
+# 🌟 Star System Visualization
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A 3D interactive star system built with [React](https://react.dev/), [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/), and [@react-three/drei](https://docs.pmnd.rs/drei/). Explore a simple solar system with animated planets, a glowing star, and a starry background—all rendered in your browser.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Central Star**: Bright, emissive star at the center of the system.
+- **Orbiting Planets**: Multiple planets with customizable radius, color, orbit distance, and speed.
+- **Starry Background**: Realistic star field using Drei's `<Stars />` component.
+- **3D Controls**: Orbit the camera freely with mouse/touch (via `<OrbitControls />`).
+- **Responsive**: Fills the entire browser window.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- [Node.js](https://nodejs.org/) (v16+ recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+```bash
+git clone https://github.com/your-username/star-system.git
+cd star-system
+npm install
+# or
+yarn
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running the App
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm start
+# or
+yarn start
 ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Project Structure
+
+```
+src/
+  components/
+    Star.tsx         # The central star
+    Narrum.tsx       # Example planet
+    Balen.tsx        # Another planet
+    StarryBackground.tsx # Star field
+  App.tsx            # Main scene setup
+  App.css            # Global styles
+```
+
+## Customization
+
+- **Add Planets**: Copy and modify `Narrum.tsx` or `Balen.tsx` for more planets.
+- **Change Orbits**: Adjust `distance` and `speed` props.
+- **Visuals**: Tweak colors, radii, and materials for different looks.
+- **Background**: Edit `StarryBackground.tsx` for denser or sparser stars.
+
+## Dependencies
+
+- [react](https://react.dev/)
+- [@react-three/fiber](https://docs.pmnd.rs/react-three-fiber/)
+- [@react-three/drei](https://docs.pmnd.rs/drei/)
+
+## License
+
+MIT
+
+---
+
+*Made with 🪐 and React Three Fiber.*
