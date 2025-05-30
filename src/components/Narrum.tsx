@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 
-export default function Narrum({ radius = 0.3, distance = 4, speed = 0.5, color = 'red' }) {
+export default function Narrum({ radius = 0.7, distance = 3, speed = 0.5, color = 'black' }) {
     const ref = useRef();
 
     useFrame(({ clock }) => {

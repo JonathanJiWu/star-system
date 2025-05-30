@@ -1,22 +1,27 @@
 import './App.css'
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 
 import Star from './components/Star';
+
 import Narrum from './components/Narrum';
 import Balen from './components/Balen';
 
+import StarryBackground from './components/StarryBackground';
+
 function App() {
   return (
-    <Canvas camera={{ position: [0, 5, 10], fov: 60 }}>
-      <ambientLight intensity={-6} />
-      <pointLight position={[0, 0, 0]} intensity={2} color="white" />
+    <Canvas 
+      camera={{ position: [0, 5, 10], fov: 60 }}
+      style={{ background: '#000000' }} 
+      >
+      <ambientLight intensity={.3} />
+      <pointLight position={[0, 0, 0]} intensity={99} color="white" />
       <Star />
       <Narrum />
       <Balen />
       <OrbitControls />
-      <Stars radius={100} depth={50} count={500} factor={4} saturation={999} fade />\
-    //what are these? Stars is a component from @react-three/drei that creates a starry background in the scene. The props control the appearance of the stars, such as radius, depth, count, factor, saturation, and fade.
+      <StarryBackground />
     </Canvas>
   )
 }

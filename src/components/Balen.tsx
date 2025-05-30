@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 
-export default function Balen({ radius = 0.5, distance = 6, speed = 0.5, color = 'skyblue' }) {
+export default function Balen({ radius = 0.9, distance = 6, speed = 0.3, color = 'grey' }) {
   const ref = useRef();
 
   useFrame(({ clock }) => {
