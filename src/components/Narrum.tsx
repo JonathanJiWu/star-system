@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Mesh } from 'three';
 
-export default function Narrum({ radius = 0.7, distance = 3, speed = 0.5, color = 'black' }) {
+export default function Narrum({ radius = 0.84, distance = 3.6, speed = 0.39, color = 'black' }) {
     const ref = useRef<Mesh>(null);
 
     useFrame(({ clock }) => {

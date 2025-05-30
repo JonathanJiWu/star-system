@@ -1,0 +1,330 @@
+
+// 🌍 PLANET PROPERTIES
+// 1. Visual
+// radius: Size of the planet
+
+// color: Surface color or texture
+
+// texture map: Add a detailed surface (e.g. Earth map, Mars terrain)
+
+// roughness, metalness: Surface reflectivity
+
+// emissive: Glow (e.g. lava planets, city lights at night)
+
+// wireframe: For stylized looks
+
+// 2. Motion
+// orbit distance: How far from the star
+
+// orbit speed: How fast it revolves around the star
+
+// rotation speed: How fast it spins on its axis
+
+// tilt: Axial tilt (for realism)
+
+// orbit inclination: Slanted orbits
+
+// 🌟 STAR PROPERTIES
+// size: Radius of the star
+
+// color: Yellow, red giant, blue dwarf, etc.
+
+// emissiveIntensity: Brightness/glow
+
+// light intensity and color: Affects planets' lighting
+
+// flare, corona, or shaders (advanced): For realism
+
+// 🌌 SCENE ELEMENTS
+// Stars background: Adjust @react-three/drei <Stars /> options (density, colors, fade)
+
+// Ambient light: Sets global light tone
+
+// Point/Directional light: Simulates sun rays
+
+// Fog: Add distance-based fade
+
+// Skybox or background image: Space nebula, galaxy panorama
+
+// 🎥 CAMERA & CONTROLS
+// Free camera: Use <OrbitControls />
+
+// Fly camera: Use <FlyControls /> for spaceship-like movement
+
+// Zoom behavior: Customize limits
+
+// Follow a planet: Animate the camera target
+
+// 🌙 MOONS & RINGS
+// Add a <Moon /> that orbits a <Planet />
+
+// Use torus geometry or texture maps for planetary rings (like Saturn)
+
+// 🎯 INTERACTIONS
+// Click a planet to zoom in
+
+// Hover effects (highlight, show info)
+
+// Labels with <Html /> from @react-three/drei
+
+// 🧱 Example customization:
+// jsx
+// Copy
+// Edit
+// <Planet
+//   radius={1.2}
+//   distance={10}
+//   speed={0.3}
+//   color="#6699ff"
+//   rotationSpeed={0.01}
+//   tilt={0.4}
+// />
+
+
+// # Data for the Solara Mortis system
+// export const solaraMortisSystem = {
+//   star: {
+//     name: "Solara Mortis (WD)",
+//     type: "star",
+//     // Actual Values
+//     orbitalDistanceAU: 0,
+//     radiusKm: 6000,
+//     massSolarMasses: 0.6,
+//     // Render Values (Normalized)
+//     renderedOrbitalDistance: 0, // Center of the system
+//     renderedRadius: 1.05945, // (6000 / 5097) * 0.9
+//     // Visuals & Info
+//     color: "lightyellow", // e.g., '#FFFFE0' for emissive material in Three.js
+//     emissiveIntensity: 2, // Example: higher for star
+//     textureHint: "pale_white_blue_ethereal_glow_subtle_surface_detail",
+//     description: "An old, cooling white dwarf. The ancient heart of the system."
+//   },
+//   celestialObjects: [
+//     {
+//       name: "Narrum",
+//       type: "planet",
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       orbitalDistanceAU: 0.015,
+//       radiusKm: 4778,
+//       massEarthMasses: 0.4,
+//       orbitalPeriodEarthDays: 0.865,
+//       rotationPeriod: "tidallyLocked",
+//       axialTiltDegrees: 0.5,
+//       gravityNormalized: 0.7,
+//       // Render Values (Normalized)
+//       renderedOrbitalDistance: (0.015 / 0.025) * 6, // 3.6
+//       renderedRadius: (4778 / 5097) * 0.9,          // ~0.844
+//       renderSpeedHint: 0.3 * Math.sqrt(6 / ((0.015 / 0.025) * 6)), // ~0.387
+//       // Visuals & Info
+//       color: "orangered", // e.g., '#FF4500'
+//       textureHint: "rocky_red_ochre_craters_graphite_plains_metallic_veins_dayside_scorched_terminator_glow",
+//       description: "Warmer, tidally locked world (0.7g). Primary source of heavy metals. Vast solar farms on its scorched dayside."
+//     },
+//     {
+//       name: "Balen",
+//       type: "planet",
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       orbitalDistanceAU: 0.025,
+//       radiusKm: 5097,
+//       massEarthMasses: 0.64,
+//       orbitalPeriodEarthDays: 1.862, // This is Balen's "day"
+//       rotationPeriod: "tidallyLocked",
+//       axialTiltDegrees: 0.5,
+//       gravityNormalized: 1.0,
+//       // Render Values (Normalized - these are your reference values)
+//       renderedOrbitalDistance: 6.0,
+//       renderedRadius: 0.9,
+//       renderSpeedHint: 0.3,
+//       // Visuals & Info
+//       color: "grey", // As per your component default
+//       textureHint: "pale_blue_grey_temperate_dayside_ice_hints_terminator_cities_graphite_mountains_ancient_mine_scars",
+//       description: "Colder, tidally locked world (1g) with a managed atmosphere. Rich in Carbon, depleted in heavy metals. Vast temperate dayside.",
+//       moons: [
+//         {
+//           name: "Selene",
+//           // Actual Values
+//           radiusKm: 868,
+//           orbitalDistanceKmAroundParent: 192000,
+//           orbitalPeriodParentDays: 14.9,
+//           // Render Values (Scaled relative to Balen's rendered radius and a chosen scene distance for moons)
+//           // Example: Render Selene at 1.5 units from Balen in the scene
+//           renderedOrbitalDistanceMoon: 1.5, // Scene units from Balen
+//           renderedRadiusMoon: (868 / 5097) * 0.9, // ~0.153, scaled like other planets for consistency
+//           renderSpeedHintMoon: 0.1, // Slower speed for moon orbit
+//           // Visuals & Info
+//           color: "lightgrey",
+//           textureHint: "grey_cratered_rocky"
+//         }
+//       ]
+//     },
+//     {
+//       name: "Hephaestus Station",
+//       type: "station",
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       orbitalDistanceAU: 0.025, // Same as Balen (L4/L5)
+//       radiusKm: 3, // Symbolic actual size
+//       orbitalPeriodEarthDays: 1.862, // Same as Balen
+//       lagrangePointInfo: "Solara Mortis-Balen L4 or L5",
+//       // Render Values (Normalized)
+//       renderedOrbitalDistance: 6.0, // Same as Balen
+//       renderedRadius: (3 / 5097) * 0.9, // ~0.00053 (will be very small, may need minimum size clamp in Three.js)
+//       renderSpeedHint: 0.3, // Moves with Balen
+//       // Visuals & Info
+//       color: "darkgrey",
+//       textureHint: "metallic_industrial_ports_shipyards_refineries_structural_rings_docking_arms",
+//       description: "Orbital Industrial Hub & Shipyard at a Solara Mortis-Balen Lagrange point."
+//     },
+//     {
+//       name: "Kybele",
+//       type: "planetoid",
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       orbitalDistanceAU: 0.3,
+//       radiusKm: 250,
+//       orbitalPeriodEarthDays: 30.37,
+//       rotationPeriod: 0.4, // Earth days
+//       axialTiltDegrees: 10,
+//       // Render Values (Normalized)
+//       renderedOrbitalDistance: (0.3 / 0.025) * 6,  // 72
+//       renderedRadius: (250 / 5097) * 0.9,         // ~0.044
+//       renderSpeedHint: 0.3 * Math.sqrt(6 / ((0.3 / 0.025) * 6)), // ~0.086
+//       // Visuals & Info
+//       color: "olive",
+//       textureHint: "irregular_shape_dark_surface_crystalline_patches_chemical_deposits_geysers_hint",
+//       description: "Chemically rich planetoid. Source of complex non-metallic minerals and compounds."
+//     },
+//     {
+//       name: "Fortress Aegis",
+//       type: "planetoid",
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       orbitalDistanceAU: 0.5,
+//       radiusKm: 180,
+//       orbitalPeriodEarthDays: 67.92,
+//       rotationPeriod: 0.6, // Earth days
+//       axialTiltDegrees: 5,
+//       // Render Values (Normalized)
+//       renderedOrbitalDistance: (0.5 / 0.025) * 6,  // 120
+//       renderedRadius: (180 / 5097) * 0.9,         // ~0.031
+//       renderSpeedHint: 0.3 * Math.sqrt(6 / ((0.5 / 0.025) * 6)), // ~0.067
+//       // Visuals & Info
+//       color: "silver",
+//       textureHint: "metallic_grey_fortified_geometric_structures_weapon_emplacements_sensor_arrays_shield_glimmer",
+//       description: "Heavily fortified military outpost planetoid."
+//     },
+//     {
+//       name: "Wellspring Belt",
+//       type: "belt",
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       innerRadiusAU: 0.75,
+//       outerRadiusAU: 1.5,
+//       // Render Values (Normalized)
+//       renderedInnerRadius: (0.75 / 0.025) * 6, // 180
+//       renderedOuterRadius: (1.5 / 0.025) * 6,  // 360
+//       // Visuals & Info
+//       color: "skyblue",
+//       textureHint: "diffuse_icy_particles_cometary_fragments_blue_white_sheen_occasional_larger_chunks",
+//       particleStyle: "icy_cometary",
+//       description: "Diffuse belt of icy bodies. Primary water source."
+//     },
+//     {
+//       name: "Inner Debris Disk Remnants",
+//       type: "belt",
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       innerRadiusAU: 1.5,
+//       outerRadiusAU: 3.0,
+//       // Render Values (Normalized)
+//       renderedInnerRadius: (1.5 / 0.025) * 6, // 360
+//       renderedOuterRadius: (3.0 / 0.025) * 6, // 720
+//       // Visuals & Info
+//       color: "sienna",
+//       textureHint: "sparse_rocky_dusty_brown_grey_small_asteroids_variable_albedo",
+//       particleStyle: "rocky_dusty",
+//       description: "Sparse disk of smaller rocky debris and dust."
+//     },
+//     {
+//       name: "Tyche Minor",
+//       type: "planet", // Gas Dwarf / Ice Giant Remnant
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       orbitalDistanceAU: 5.0,
+//       radiusKm: 18000,
+//       massEarthMasses: 7,
+//       orbitalPeriodEarthDays: 607.4,
+//       rotationPeriod: 0.65, // Earth days
+//       axialTiltDegrees: 15,
+//       // Render Values (Normalized)
+//       renderedOrbitalDistance: (5.0 / 0.025) * 6,   // 1200
+//       renderedRadius: (18000 / 5097) * 0.9,        // ~3.178
+//       renderSpeedHint: 0.3 * Math.sqrt(6 / ((5.0 / 0.025) * 6)), // ~0.021
+//       // Visuals & Info
+//       color: "mediumseagreen",
+//       textureHint: "blue_green_gas_swirls_icy_haze_ faint_rings_small_moons_visible",
+//       description: "Gas Dwarf. Atmosphere rich in Noble Gases for ion engines."
+//     },
+//     {
+//       name: "'Old Bones' Asteroid Belt",
+//       type: "belt",
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       innerRadiusAU: 10.0,
+//       outerRadiusAU: 15.0,
+//       // Render Values (Normalized)
+//       renderedInnerRadius: (10.0 / 0.025) * 6, // 2400
+//       renderedOuterRadius: (15.0 / 0.025) * 6, // 3600
+//       // Visuals & Info
+//       color: "darkgoldenrod",
+//       textureHint: "dark_varied_asteroids_metallic_sheen_primordial_rock_pitted_surfaces",
+//       particleStyle: "metallic_rocky_primordial",
+//       description: "Asteroid belt remnant of the original star system."
+//     },
+//     {
+//       name: "Outer Gloom Object 'Erebos Prime'",
+//       type: "planetoid", // Dwarf planet
+//       orbitsAround: "Solara Mortis (WD)",
+//       // Actual Values
+//       orbitalDistanceAU: 102.2,
+//       radiusKm: 1100,
+//       orbitalPeriodEarthDays: 60850, // This is very long
+//       rotationPeriod: 1.2, // Earth days
+//       axialTiltDegrees: 25,
+//       // Render Values (Normalized)
+//       renderedOrbitalDistance: (102.2 / 0.025) * 6, // 24528
+//       renderedRadius: (1100 / 5097) * 0.9,          // ~0.194
+//       renderSpeedHint: 0.3 * Math.sqrt(6 / ((102.2 / 0.025) * 6)), // ~0.0047
+//       // Visuals & Info
+//       color: "ghostwhite",
+//       textureHint: "icy_surface_dark_patches_cryovolcanic_features_dimly_lit",
+//       description: "Significant dwarf planet in the Outer Gloom. Distant outpost or legend."
+//     }
+//   ],
+//   timekeeping: { // For reference
+//     standardDayDefinition: "Artificial construct (e.g., 20-30 'standard hours'). Balen Standard Day (BSD) used system-wide.",
+//     balenNaturalDayLengthEarthDays: 1.862, // Balen's tidally locked rotation period
+//     standardSystemCycleSSCEarthDays: 18.62 // 10 Balenian orbits/days
+//   }
+// };
+
+// Notes on Using This Data:
+
+// Star Size: Solara Mortis now has renderedRadius: 1.05945. You might want to adjust your Star component's 
+// <sphereGeometry args={[1.05945, 64, 64]} /> or accept the slight proportional variance if you keep it at 1.
+// Hephaestus Station Radius: Its renderedRadius is tiny (~0.00053). In Three.js, you'll likely want to give it
+//  a minimum visible size or use a representative model/sprite that isn't strictly scaled by this radius, 
+// otherwise it will be invisible.
+// Belts: The renderedInnerRadius and renderedOuterRadius are provided. You'll use these to define the span of 
+// your particle fields or textured rings in Three.js.
+// Outer Gloom: The Outer Gloom Object 'Erebos Prime' is placed at its calculated scaled distance. The vastness
+//  of the Outer Gloom region itself (starting ~30-50 AU, so renderedOrbitalDistance of 7200-12000) would be
+// represented by a very sparse, distant particle effect or skybox elements in your scene. The distances become 
+// very large quickly.
+// Orbital Speeds: The renderSpeedHint values are just suggestions for relative animation speeds. You'll need to
+//  implement the animation logic in Three.js. True orbital speeds vary along elliptical orbits, but for circular
+//  approximations, this gives a starting point.
+// Logarithmic Camera/Zoom: For your 3D scene, to view both the inner and outer system effectively, you might 
+// need a camera that can zoom logarithmically or different "views" (e.g., an inner system view and an outer system view).
