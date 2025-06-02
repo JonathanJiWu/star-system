@@ -1,6 +1,7 @@
 import { useMemo, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Color, Mesh } from 'three';
+//import { Color, Mesh } from 'three';
+import { Mesh } from 'three';
 
 const NUM_PARTICLES = 500;
 const renderedInnerRadius = 170;
