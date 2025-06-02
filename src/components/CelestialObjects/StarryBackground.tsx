@@ -5,7 +5,7 @@ import { Stars } from '@react-three/drei';
 
 export default function StarryBackground() {
     return (
-        <Stars radius={100} depth={50} count={500} factor={4} saturation={999} fade speed={1} />
+        <Stars radius={300} depth={30} count={1000} factor={10} saturation={1} fade speed={1} />
     );
 }
 
