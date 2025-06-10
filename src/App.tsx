@@ -25,7 +25,7 @@ function App() {
       style={{ background: '' }}//test to remove background color
     >
       <ambientLight intensity={.3} />
-      <pointLight position={[0, 0, 0]} intensity={200} color="white" />
+      <pointLight position={[0, 0, 0]} intensity={666} color="white" />
       <Star />
       <Narrum />
       <Balen ref={balenRef} />
